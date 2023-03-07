@@ -2,14 +2,20 @@
 ## Table of contents
 * [General info](#general-info)
 * [Description](#Description)
-* [Setup](#setup)
 
 ## General info
- An important issue in the Iranian stock market is the adjustment of stock prices after the capital injection.
-	
+ An important issue in the Iranian stock market is the adjustment of stock prices after the capital injection. In this work, in this work, we want to calculate the adjusted price of a stock in any arbitrary interval with respect to the end of the interval. Consider the following two vector
+ ```math
+ \bold(P) = (P_1,P_2,\cdots,P_n)\\
+ \bold(P^{adj^y}) = (P_1^{adj^y},P_2^{adj^y},\cdots,P_n^{adj^y}).
+ ```
+ Where $P_i$ is the price of stock  for the $i$th day and $P_i^{adj^y}$ is the price of stock  for the $(i-1)$th day such that the adjusted price is calculated with information on $i$th day. Now we can calculate the adjusted price using the following formula
+ ```math
+ p_i=\prod_{k=i+1}^{n}p_i
+ ```
 ## Description
 this code is created of the following steps:
-* calling Tehran stock exchange data from the web using package finpy_tse, pytse-client ...
+* calling Tehran stock exchange data from the web using package [pytse-client](https://pypi.org/project/pytse-client/) ...
 * We use the following formula to adjust the stocks price
 	
 ## Setup
