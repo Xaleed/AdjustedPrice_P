@@ -6,12 +6,12 @@
 ## General info
  An important issue in the Iranian stock market is the adjustment of stock prices after the capital injection. In this work, in this work, we want to calculate the adjusted price of a stock in any arbitrary interval with respect to the end of the interval. Consider the following two vector
  ```math
- \bold(P) = (P_1,P_2,\cdots,P_n)\\
- \bold(P^{adj^y}) = (P_1^{adj^y},P_2^{adj^y},\cdots,P_n^{adj^y}).
+ P = (P_1,P_2,\cdots,P_n) \\
+ P^{adj^y} = (P_1^{adj^y},P_2^{adj^y},\cdots,P_n^{adj^y}).
  ```
- Where $P_i$ is the price of stock  for the $i$th day and $P_i^{adj^y}$ is the price of stock  for the $(i-1)$th day such that the adjusted price is calculated with information on $i$th day. Now we can calculate the adjusted price using the following formula
+ Where $P_i$ is the price of stock  for the $i$th day and $P_i^{adj^y}$ is the price of stock  for the $(i-1)$th day such that the adjusted price is calculated with information on $i$th day. Now we can calculate the adjusted price with respect to all capital injections till the end of the interval using the following formula 
  ```math
- p_i=\prod_{k=i+1}^{n}p_i
+ P_i^{FullAdj}=\prod_{k=i+1}^{n}\frac{P_i}{P_1^{adj^y}}
  ```
 ## Description
 this code is created of the following steps:
