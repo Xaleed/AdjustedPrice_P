@@ -1,119 +1,65 @@
 
 ## Table of contents
-* [Price Adjustment](#Price Adjustment)
+* [Price Adjustment](#Price-Adjustment)
 * [Description](#Description)
 
 ## Price Adjustment
  An important issue in the Iranian stock market is the adjustment of stock prices after the capital injection. In this work, in this work, we want to calculate the adjusted price of a stock in any arbitrary interval with respect to the end of the interval. Consider the following two vector
  ```math
  P = (P_1,P_2,\cdots,P_n) \\
- P^{adj^y} = (P_1^{adj^y},P_2^{adj^y},\cdots,P_n^{adj^y}).
+ P^{y} = (P_1^{y},P_2^{y},\cdots,P_n^{y}).
  ```
- Where $P_i$ is the price of stock  for the $i$th day and $P_i^{adj^y}$ is the price of stock  for the $(i-1)$th day such that the adjusted price is calculated with information on $i$th day. Now we can calculate the adjusted price with respect to all capital injections till the end of the interval using the following formula 
+ Where $P_i$ is the price of stock  for the $i$th day and $P_i^{adj^y}$ is the price of stock  for the ($i-1$)th day such that the adjusted price is calculated based on information of $i$th day. Now we can calculate the adjusted price with respect to all capital injections till the end of the interval using the following formula
  ```math
- P_i^{FullAdj}=\prod_{k=i+1}^{n}\frac{P_i}{P_1^{adj^y}}
+ P_i^{Adj}=P_n\prod_{k=i+1}^{n}\frac{P_i^{y}}{P_i}
  ```
 ## Description
-this code is created of the following steps:
+This code is created of the following steps:
 * calling Tehran stock exchange data from the web using package [pytse-client](https://pypi.org/project/pytse-client/) ...
+```python
+import numpy as np
+import pandas as pd
+import pytse_client as tse
+tickers = tse.download(symbols="all", write_to_csv=True,  include_jdate=True)
+Price = tickers["قشکر"]
+```
+
 * We want to adjust the price from the 1400-01-01 till the 1401-12-01 with respect to all capital injections that occurred in this interval.
-* We use the following formula to adjust the stocks price
+```python
+import jdatetime
+from datetime import datetime
+FirstDayOfInterval = '1396-01-01'
+LastDayOfInterval = '1401-12-01'
+
+gregorian_date = jdatetime.date(int(LastDayOfInterval[0:4]),
+                                int(LastDayOfInterval[5:7]),int(LastDayOfInterval[8:10])).togregorian()
+Fgregorian_date = jdatetime.date(int(FirstDayOfInterval[0:4]),
+                                 int(FirstDayOfInterval[5:7]),int(FirstDayOfInterval[8:10])).togregorian()
+
+def DateT(a):
+    return(datetime.fromisoformat((a)))
+Price['date'] = Price['date'].apply(lambda x: DateT(x))
+PriceFilter = Price[(Price['date'] > pd.Timestamp(pd.to_datetime(Fgregorian_date))) & (Price['date'] < pd.Timestamp(pd.to_datetime(gregorian_date)))]
+```
+* And finally, by the following code, we can adjust the close prices
+```python
+Ratio =  PriceFilter['adjClose']/ PriceFilter['yesterday']
+CumProd = Ratio.cumprod()
+Prod = Ratio.prod()
+AdjusetCumProd = CumProd/Prod
+Loc = PriceFilter.columns.get_loc('adjClose')
+a = PriceFilter.iloc[-1, Loc]*AdjusetCumProd
+PriceFilter.insert(Loc+1,"AdjustedPrice", a, True)
+PriceFilter
+
+```
+```python
+import plotly.express as px 
+import plotly.graph_objects as go
+from plotly.subplots import make_subplots
+fig = go.Figure()
+fig.add_trace(go.Scatter(x=PriceFilter['date'], y=PriceFilter['adjClose'],name="BeforAdjust"))
+fig.add_trace(go.Scatter(x=PriceFilter['date'], y=PriceFilter['AdjustedPrice'], name="AfterAdjust"))
+```
+![image info](./newplot.png)
 	
-## Setup
-To run this project, install it locally using npm:
-
-```
-$ cd ../lorem
-$ npm install
-$ npm start
-```
-
-# Project Name
-> Outline a brief description of your project.
-> Live demo [_here_](https://www.example.com). <!-- If you have the project hosted somewhere, include the link here. -->
-
-## Table of Contents
-* [General Info](#general-information)
-* [Technologies Used](#technologies-used)
-* [Features](#features)
-* [Screenshots](#screenshots)
-* [Setup](#setup)
-* [Usage](#usage)
-* [Project Status](#project-status)
-* [Room for Improvement](#room-for-improvement)
-* [Acknowledgements](#acknowledgements)
-* [Contact](#contact)
-<!-- * [License](#license) -->
-
-
-## General Information
-- Provide general information about your project here.
-- What problem does it (intend to) solve?
-- What is the purpose of your project?
-- Why did you undertake it?
-<!-- You don't have to answer all the questions - just the ones relevant to your project. -->
-
-
-## Technologies Used
-- Tech 1 - version 1.0
-- Tech 2 - version 2.0
-- Tech 3 - version 3.0
-
-
-## Features
-List the ready features here:
-- Awesome feature 1
-- Awesome feature 2
-- Awesome feature 3
-
-
-## Screenshots
-![Example screenshot](./img/screenshot.png)
-<!-- If you have screenshots you'd like to share, include them here. -->
-
-
-## Setup
-What are the project requirements/dependencies? Where are they listed? A requirements.txt or a Pipfile.lock file perhaps? Where is it located?
-
-Proceed to describe how to install / setup one's local environment / get started with the project.
-
-
-## Usage
-How does one go about using it?
-Provide various use cases and code examples here.
-
-`write-your-code-here`
-
-
-## Project Status
-Project is: _in progress_ / _complete_ / _no longer being worked on_. If you are no longer working on it, provide reasons why.
-
-
-## Room for Improvement
-Include areas you believe need improvement / could be improved. Also add TODOs for future development.
-
-Room for improvement:
-- Improvement to be done 1
-- Improvement to be done 2
-
-To do:
-- Feature to be added 1
-- Feature to be added 2
-
-
-## Acknowledgements
-Give credit here.
-- This project was inspired by...
-- This project was based on [this tutorial](https://www.example.com).
-- Many thanks to...
-
-
-## Contact
-Created by [@flynerdpl](https://www.flynerd.pl/) - feel free to contact me!
-
-
-<!-- Optional -->
-<!-- ## License -->
-<!-- This project is open source and available under the [... License](). -->
-
-<!-- You don't have to include all sections - just the one's relevant to your project -->
