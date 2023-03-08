@@ -1,9 +1,9 @@
 
 ## Table of contents
-* [General info](#general-info)
+* [Price Adjustment](#Price Adjustment)
 * [Description](#Description)
 
-## General info
+## Price Adjustment
  An important issue in the Iranian stock market is the adjustment of stock prices after the capital injection. In this work, in this work, we want to calculate the adjusted price of a stock in any arbitrary interval with respect to the end of the interval. Consider the following two vector
  ```math
  P = (P_1,P_2,\cdots,P_n) \\
@@ -16,6 +16,7 @@
 ## Description
 this code is created of the following steps:
 * calling Tehran stock exchange data from the web using package [pytse-client](https://pypi.org/project/pytse-client/) ...
+* We want to adjust the price from the 1400-01-01 till the 1401-12-01 with respect to all capital injections that occurred in this interval.
 * We use the following formula to adjust the stocks price
 	
 ## Setup
