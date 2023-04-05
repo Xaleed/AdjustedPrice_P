@@ -4,7 +4,7 @@
 * [Description](#Description)
 
 ## Price Adjustment
- An important issue in the Iranian stock market is the adjustment of stock prices after the capital injection. In this work, in this work, we want to calculate the adjusted price of a stock in any arbitrary interval with respect to the end of the interval. Consider the following two vector
+ An important issue in the Iranian stock market is the adjustment of stock prices after the capital injection. In this work, we want to calculate the adjusted price of a stock in any arbitrary interval with respect to the end of the interval. Consider the following two vector
  ```math
  P = (P_1,P_2,\cdots,P_n) \\
  P^{y} = (P_1^{y},P_2^{y},\cdots,P_n^{y}).
