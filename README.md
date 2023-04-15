@@ -9,7 +9,7 @@
  P = (P_1,P_2,\cdots,P_n) \\
  P^{y} = (P_1^{y},P_2^{y},\cdots,P_n^{y}).
  ```
- Where $P_i$ is the price of stock  for the ($i$)th day and $P_i^{y}$ is the price of stock  for the ($i-1$)th day such that the adjusted price is calculated based on information of $i$th day. Now we can calculate the adjusted price with respect to all capital injections till the end of the interval using the following formula
+ Where $P_i$ is the price of stock  for the ($i$)th day and $P_i^{y}$ is the price of stock  for the ($i-1$)th day such that the adjustment on this price is calculated based on information of $i$th day. Now we can calculate the adjusted price with respect to all capital injections till the end of the interval using the following formula
  ```math
  P_i^{Adj}=P_n\prod_{k=i+1}^{n}\frac{P_i^{y}}{P_i}
  ```
