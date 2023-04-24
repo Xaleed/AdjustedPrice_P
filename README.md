@@ -64,4 +64,3 @@ fig.add_trace(go.Scatter(x=PriceFilter['date'], y=PriceFilter['adjClose'],name="
 fig.add_trace(go.Scatter(x=PriceFilter['date'], y=PriceFilter['AdjustedPrice'], name="AfterAdjust"))
 ```
 ![image info](./newplot.png)
-	
