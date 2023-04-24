@@ -4,7 +4,7 @@
 * [Code](#Code)
 
 ## Price Adjustment
- An important issue in the Iranian Stock Exchange market is the adjustment of stock prices after the capital injection. There are different types of capital injection in Iran, and sometimes you need to adjust the prices after the capital injection. In the following, I use an easy approach and provide corresponding Python code to get and adjust prices with respect to all capital injections. In fact, we want to calculate the adjusted price of a stock in any arbitrary interval with respect to the end of this interval. Consider the following two vector
+ An important issue in Iran Stock Exchange market is the adjustment of stock prices after the capital injection. There are different types of capital injection in Iran, and sometimes you need to adjust the prices after the capital injection. In the following, I use an easy approach and provide corresponding Python code to get and adjust prices with respect to all capital injections. In fact, we want to calculate the adjusted price of a stock in any arbitrary interval with respect to the end of this interval. Consider the following two vector
  ```math
  P = (P_1,P_2,\cdots,P_n) \\
  P^{y} = (P_1^{y},P_2^{y},\cdots,P_n^{y}).
