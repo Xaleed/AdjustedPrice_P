@@ -4,12 +4,12 @@
 * [Code](#Code)
 
 ## Price Adjustment
- An important issue in the Iranian Stock Exchange market is the adjustment of stock prices after the capital injection. There are different types of capital injection in Iran, and sometimes you need to adjust the prices after the capital injection. In the following, I use an easy approach and provide corresponding Python code to get and adjust prices with respect to all capital injections. In fact, we want to calculate the adjusted price of a stock in any arbitrary interval with respect to the end of this interval. Consider the following two vector
+ An important issue in Iran Stock Exchange is adjustment of stock prices after capital raising through equity. There are different types of capital raising through equity, and sometimes you need to adjust the prices after it. In the following, I use an easy approach and provide corresponding Python code to get and adjust prices with respect to all capital raising. In fact, we want to calculate the adjusted price of a stock in any arbitrary interval with respect to the end of this interval. Consider the following two vector
  ```math
  P = (P_1,P_2,\cdots,P_n) \\
  P^{y} = (P_1^{y},P_2^{y},\cdots,P_n^{y}).
  ```
- Where $P_i$ is the price of stock  for the ($i$)th day and $P_i^{y}$ is the price of stock  for the ($i-1$)th day such that the adjustment on this price is calculated based on information of $i$th day. Now we can calculate the adjusted price with respect to all capital injections till the end of the interval using the following formula
+ Where $P_i$ is the price of day ($i$)  and $P_i^{y}$ is the price of day ($i-1$) that calculated based on information of day $i$th. Now we can calculate the adjusted price with respect to all capital raise till the end of the interval using the following formula
  ```math
  P_i^{Adj}=P_n\prod_{k=i+1}^{n}\frac{P_i^{y}}{P_i}
  ```
@@ -24,7 +24,7 @@ tickers = tse.download(symbols="all", write_to_csv=True,  include_jdate=True)
 Price = tickers["قشکر"]
 ```
 
-* We want to adjust the price from the 1400-01-01 till the 1401-12-01 with respect to all capital injections that occurred in this interval.
+* We want to adjust the price from the 1396-01-01 till the 1401-12-01 with respect to all capital injections that occurred in this interval.
 ```python
 import jdatetime
 from datetime import datetime
