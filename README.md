@@ -9,7 +9,7 @@
  P = (P_1,P_2,\cdots,P_n) \\
  P^{y} = (P_1^{y},P_2^{y},\cdots,P_n^{y}).
  ```
- Where $P_t$ is the price of day t and $P_t^{i}$ is the price of stock day ($t-i$). The adjustment on this price is calculated based on information of day $t-i$. Now we can calculate the adjusted price with respect to all capital raise till the end of the interval using the following formula
+
  
  Where $P_i$ is the price of day ($i$)  and $P_i^{y}$ is the price of day ($i-1$).Infact, index $y$ refer to yesterday and $P_i^{y}$ is the price of day ($i-1$) that calculate in day $i$, i.e., if there have been changes such as dividend distribution between day ($i-1$) and day $i$, we will apply its effect on price of day ($i-1$). Let us give an example: consider $P_{i-1} = k$ and $Dividend = d$, then $P_i^{y} = k-d$. Now we can calculate the adjusted price with respect to all capital raise till the end of the interval using the following formula
  ```math

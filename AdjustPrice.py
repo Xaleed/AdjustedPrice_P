@@ -2,8 +2,6 @@
 # coding: utf-8
 
 # In[461]:
-
-
 import numpy as np
 import pandas as pd
 import pytse_client as tse
