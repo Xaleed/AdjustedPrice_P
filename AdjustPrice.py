@@ -17,7 +17,7 @@ from scipy.ndimage.interpolation import shift
 
 
 #tickers = tse.download(symbols="all", write_to_csv=True,  include_jdate=True)
-Price1 = pd.read_csv("/home/khaled/Project/AdjustedPrice_P/tickers_data/قشکر.csv")
+Price1 = pd.read_csv("/home/khaled/Project/DataScienceInStockForecasting/tickers_data/قشکر.csv")
 Price = Price1[Price1['volume']>100].copy()
 
 
@@ -40,16 +40,6 @@ Price['date'] = Price['date'].apply(lambda x: DateT(x))
 PriceFilter = Price[(Price['date'] > pd.Timestamp(pd.to_datetime(Fgregorian_date))) & (Price['date'] < pd.Timestamp(pd.to_datetime(gregorian_date)))]
 
 
-# In[464]:
-
-
-PriceFilter.iloc[-1, Loc]
-
-
-# In[465]:
-
-
-Prod
 
 
 # In[466]:

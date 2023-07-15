@@ -30,7 +30,7 @@ Price = tickers["قشکر"]
 ```python
 import jdatetime
 from datetime import datetime
-FirstDayOfInterval = '1396-01-01'
+FirstDayOfInterval = '1398-01-01'
 LastDayOfInterval = '1401-12-01'
 
 gregorian_date = jdatetime.date(int(LastDayOfInterval[0:4]),
